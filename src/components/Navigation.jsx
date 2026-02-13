@@ -27,7 +27,8 @@ export default function Navigation({
   onNavigate,
   onContactClick,
   searchQuery,
-  onSearchQueryChange
+  onSearchQueryChange,
+  onSearchFocus
 }) {
   const { t, toggleLanguage } = useLanguage();
   const { theme, toggleTheme } = useTheme();
@@ -75,6 +76,7 @@ export default function Navigation({
             </span>
             <input
               value={searchQuery}
+              onFocus={onSearchFocus}
               onChange={(event) => onSearchQueryChange(event.target.value)}
               placeholder={t.nav.searchPlaceholder}
               aria-label={t.nav.searchPlaceholder}

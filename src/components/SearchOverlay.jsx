@@ -2,7 +2,7 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 
-export default function SearchOverlay({ isOpen, query, results, onClose, onSelect }) {
+export default function SearchOverlay({ isOpen, query, onQueryChange, results, onClose, onSelect }) {
   const { t } = useLanguage();
 
   return (
@@ -30,7 +30,14 @@ export default function SearchOverlay({ isOpen, query, results, onClose, onSelec
               </button>
             </div>
 
-            <p className="muted">“{query}”</p>
+            <input
+              className="search-overlay-input"
+              value={query}
+              onChange={(event) => onQueryChange(event.target.value)}
+              placeholder={t.search.placeholder}
+              aria-label={t.search.placeholder}
+              autoFocus
+            />
 
             <div className="search-results">
               {results.length ? (

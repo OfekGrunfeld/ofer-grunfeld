@@ -207,7 +207,9 @@ export default function App() {
   const tabSections = ["about", "forensic", "testimonials"];
 
   const [activeSection, setActiveSection] = useState("about");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [menuSearchQuery, setMenuSearchQuery] = useState("");
+  const [overlaySearchQuery, setOverlaySearchQuery] = useState("");
+  const [isSearchOverlayOpen, setSearchOverlayOpen] = useState(false);
   const [isContactPopupOpen, setContactPopupOpen] = useState(false);
 
   const sectionRefs = {
@@ -220,7 +222,7 @@ export default function App() {
   };
 
   const searchResults = useMemo(() => {
-    const normalizedQuery = searchQuery.trim().toLowerCase();
+    const normalizedQuery = overlaySearchQuery.trim().toLowerCase();
 
     if (!normalizedQuery) {
       return [];
@@ -238,7 +240,7 @@ export default function App() {
         displayTitle: item.title[language],
         displayDescription: item.description[language]
       }));
-  }, [language, searchQuery]);
+  }, [language, overlaySearchQuery]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -294,8 +296,21 @@ export default function App() {
   };
 
   const handleSearchSelect = (section) => {
-    setSearchQuery("");
+    setMenuSearchQuery("");
+    setSearchOverlayOpen(false);
     scrollToSection(section);
+  };
+
+  const handleMenuSearchChange = (value) => {
+    setMenuSearchQuery(value);
+
+    if (value.trim()) {
+      setSearchOverlayOpen(true);
+
+      if (!overlaySearchQuery.trim()) {
+        setOverlaySearchQuery(value);
+      }
+    }
   };
 
   return (
@@ -304,8 +319,9 @@ export default function App() {
         activeSection={activeSection}
         onNavigate={scrollToSection}
         onContactClick={() => setContactPopupOpen(true)}
-        searchQuery={searchQuery}
-        onSearchQueryChange={setSearchQuery}
+        searchQuery={menuSearchQuery}
+        onSearchQueryChange={handleMenuSearchChange}
+        onSearchFocus={() => setSearchOverlayOpen(true)}
       />
 
       <main>
@@ -341,10 +357,14 @@ export default function App() {
       <Footer />
 
       <SearchOverlay
-        isOpen={searchQuery.trim().length > 0}
+        isOpen={isSearchOverlayOpen}
         results={searchResults}
-        query={searchQuery}
-        onClose={() => setSearchQuery("")}
+        query={overlaySearchQuery}
+        onQueryChange={setOverlaySearchQuery}
+        onClose={() => {
+          setSearchOverlayOpen(false);
+          setMenuSearchQuery("");
+        }}
         onSelect={handleSearchSelect}
       />
 

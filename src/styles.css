@@ -14,6 +14,8 @@
   --shadow: 0 12px 34px rgba(15, 23, 42, 0.1);
   --shadow-soft: 0 8px 20px rgba(15, 23, 42, 0.06);
   --radius: 16px;
+  --text-contrast: #ffffff;
+  --panel-contrast: #0f172a;
 }
 
 [data-theme="dark"] {
@@ -31,6 +33,8 @@
   --blue-soft: rgba(59, 130, 246, 0.2);
   --shadow: 0 16px 34px rgba(0, 0, 0, 0.34);
   --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.2);
+  --text-contrast: #ffffff;
+  --panel-contrast: #e2e8f0;
 }
 
 * {
@@ -148,7 +152,7 @@ html[dir="rtl"] .serif {
 }
 
 .cta-btn {
-  color: white;
+  color: var(--text-contrast);
   border-radius: 999px;
   padding: 0.72rem 1.3rem;
   font-weight: 700;
@@ -174,7 +178,7 @@ html[dir="rtl"] .serif {
   padding: 0.66rem 1.15rem;
   border: 1px solid var(--border);
   background: color-mix(in oklab, var(--surface-strong) 90%, transparent);
-  color: var(--text-main);
+  color: var(--panel-contrast);
 }
 
 .icon-btn {
@@ -191,8 +195,8 @@ html[dir="rtl"] .serif {
 
 .lang-btn {
   width: auto;
-  min-width: 3.35rem;
-  padding-inline: 0.78rem;
+  min-width: 2.3rem;
+  padding-inline: 0.6rem;
   font-weight: 700;
 }
 
@@ -384,22 +388,29 @@ html[dir="rtl"] .serif {
 
 .hero-availability {
   margin-top: 0.95rem;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   gap: 0.55rem;
   flex-wrap: wrap;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
 }
 
 .hero-contact-chip {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.42rem 0.75rem;
+  padding: 0.38rem 0.68rem;
   border-radius: 999px;
   border: 1px solid var(--border);
   background: color-mix(in oklab, var(--surface-strong) 80%, transparent);
   color: var(--text-soft);
   cursor: pointer;
+  flex: 0 0 auto;
+  min-width: fit-content;
+  max-width: 100%;
+  font-size: 0.9rem;
 }
 
 .hero-contact-chip i {
@@ -411,6 +422,19 @@ html[dir="rtl"] .serif {
   font-weight: 600;
   text-decoration: underline;
   text-decoration-color: color-mix(in oklab, var(--blue) 40%, transparent);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html[dir="rtl"] .hero-contact-chip {
+  justify-content: flex-end;
+}
+
+.hero-contact-value {
+  min-width: 0;
+  width: auto;
+  max-width: 100%;
 }
 
 .pulse-dot {
@@ -562,6 +586,10 @@ html[dir="rtl"] .serif {
   background: color-mix(in oklab, var(--surface-strong) 85%, transparent);
   color: var(--text-main);
   cursor: pointer;
+}
+
+.side-arrow i {
+  pointer-events: none;
 }
 
 .side-dots {
@@ -888,12 +916,14 @@ html[dir="rtl"] .serif {
 
 .contact-line strong {
   font-size: 0.97rem;
+  width: 100%;
 }
 
 .contact-ltr {
   direction: ltr;
-  unicode-bidi: bidi-override;
-  text-align: left;
+  unicode-bidi: plaintext;
+  text-align: start;
+  width: 100%;
 }
 
 .previous-email {
@@ -911,6 +941,19 @@ html[dir="rtl"] .serif {
   margin-top: 0.12rem;
   color: #cbd5e1;
   font-size: 0.78rem;
+  width: 100%;
+}
+
+html[dir="ltr"] .contact-line strong,
+html[dir="ltr"] .previous-email-inline {
+  text-align: left;
+  justify-self: start;
+}
+
+html[dir="rtl"] .contact-line strong,
+html[dir="rtl"] .previous-email-inline {
+  text-align: right;
+  justify-self: end;
 }
 
 .contact-cta {
@@ -1046,6 +1089,7 @@ html[dir="rtl"] .serif {
 
 .contact-modal h3 {
   margin: 0;
+  color: var(--text-main);
 }
 
 .contact-options {
@@ -1064,6 +1108,18 @@ html[dir="rtl"] .serif {
   background: color-mix(in oklab, var(--surface-strong) 72%, transparent);
   font-weight: 600;
   text-align: start;
+  color: var(--text-main);
+}
+
+.contact-option-btn {
+  width: 100%;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.back-btn {
+  margin-top: 0.7rem;
+  width: 100%;
 }
 
 .contact-option i,
@@ -1101,10 +1157,12 @@ html[dir="rtl"] .serif {
 .mini-popup {
   width: min(360px, 90vw);
   position: relative;
+  color: var(--text-main);
 }
 
 .mini-popup h4 {
   margin: 0;
+  color: var(--text-main);
 }
 
 .mini-popup-options {
@@ -1122,6 +1180,7 @@ html[dir="rtl"] .serif {
   align-items: center;
   gap: 0.45rem;
   text-align: start;
+  color: var(--text-main);
 }
 
 ::-webkit-scrollbar {
@@ -1143,23 +1202,49 @@ html[dir="rtl"] .serif {
 @media (max-width: 900px) {
   .desktop-nav,
   .nav-actions .cta-btn,
-  .nav-actions .search-box {
+  .nav-actions .search-box,
+  .nav-actions .theme-btn {
     display: none;
+  }
+
+  .top-nav {
+    height: 4.35rem;
+    align-items: center;
+    padding-top: 0.38rem;
+  }
+
+  .brand-text {
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 0.86rem;
+    max-width: 58vw;
   }
 
   .mobile-menu-btn {
     display: inline-grid;
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1.35rem;
+    font-weight: 700;
   }
 
   .mobile-nav {
-    width: min(1200px, 94vw);
+    width: min(320px, 94vw);
     margin: 0.42rem auto 0;
     display: grid;
-    gap: 0.45rem;
+    gap: 0.7rem;
     padding: 0.66rem;
+    justify-items: center;
   }
 
-  .mobile-nav button {
+  .mobile-nav-sections {
+    width: 100%;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .mobile-nav-sections button {
+    width: 100%;
     border: 1px solid var(--border);
     border-radius: 10px;
     background: color-mix(in oklab, var(--surface-strong) 74%, transparent);
@@ -1168,9 +1253,48 @@ html[dir="rtl"] .serif {
     text-align: start;
   }
 
-  .mobile-nav .cta-btn {
+  .mobile-search-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.35rem 0.72rem;
+    background: color-mix(in oklab, var(--surface-strong) 78%, transparent);
+  }
+
+  .mobile-search-box input {
+    width: 100%;
     border: none;
-    color: white;
+    outline: none;
+    background: transparent;
+    color: var(--text-main);
+  }
+
+  .mobile-nav-tools {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .mobile-nav-tools .cta-btn {
+    flex: 1;
+    padding-inline: 0.7rem;
+    font-size: 0.78rem;
+  }
+
+  .mobile-lang-btn {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--surface-strong) 74%, transparent);
+    color: var(--text-main);
+    width: 2.8rem;
+    height: 2.8rem;
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
   }
 
   .about-grid,
@@ -1205,7 +1329,8 @@ html[dir="rtl"] .serif {
   }
 
   .hero-contact-chip {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     justify-content: center;
   }
 

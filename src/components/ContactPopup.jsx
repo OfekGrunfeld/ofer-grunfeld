@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 
 export default function ContactPopup({ isOpen, onClose }) {
   const { language, t } = useLanguage();
+  const [isPhoneChooserOpen, setPhoneChooserOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setPhoneChooserOpen(false);
+    }
+  }, [isOpen]);
 
   const contactMessage =
     language === "he"
@@ -14,10 +21,9 @@ export default function ContactPopup({ isOpen, onClose }) {
   const subject = encodeURIComponent(
     language === "he" ? "בקשה לפגישת ייעוץ" : "Consultation Request"
   );
-
   const normalizedPhone = t.contactData.phone.replace(/[^+\d]/g, "");
 
-  const options = [
+  const mainOptions = [
     {
       iconClass: "fa-brands fa-whatsapp",
       label: t.popup.whatsapp,
@@ -25,13 +31,25 @@ export default function ContactPopup({ isOpen, onClose }) {
     },
     {
       iconClass: "fa-solid fa-phone",
-      label: t.popup.call,
-      href: `tel:${normalizedPhone}`
+      label: t.popup.call
     },
     {
       iconClass: "fa-solid fa-envelope",
       label: t.popup.email,
       href: `mailto:${t.contactData.email}?subject=${subject}&body=${message}`
+    }
+  ];
+
+  const phoneOptions = [
+    {
+      iconClass: "fa-solid fa-phone",
+      label: t.popup.callDirect,
+      href: `tel:${normalizedPhone}`
+    },
+    {
+      iconClass: "fa-brands fa-whatsapp",
+      label: t.popup.callWhatsapp,
+      href: `https://wa.me/${t.contactData.whatsappNumber}?text=${message}`
     }
   ];
 
@@ -56,23 +74,58 @@ export default function ContactPopup({ isOpen, onClose }) {
             <button type="button" className="modal-close" onClick={onClose} aria-label={t.popup.close}>
               ×
             </button>
-            <h3>{t.popup.title}</h3>
+            <h3>{isPhoneChooserOpen ? t.popup.phoneTitle : t.popup.title}</h3>
             {t.popup.subtitle ? <p className="muted">{t.popup.subtitle}</p> : null}
 
             <div className="contact-options">
-              {options.map((option) => (
-                <a
-                  key={option.label}
-                  className="contact-option"
-                  href={option.href}
-                  target={option.href.startsWith("http") ? "_blank" : undefined}
-                  rel={option.href.startsWith("http") ? "noreferrer" : undefined}
-                >
-                  <i className={option.iconClass} aria-hidden="true" />
-                  <span>{option.label}</span>
-                </a>
-              ))}
+              {isPhoneChooserOpen
+                ? phoneOptions.map((option) => (
+                    <a
+                      key={option.label}
+                      className="contact-option"
+                      href={option.href}
+                      target={option.href.startsWith("http") ? "_blank" : undefined}
+                      rel={option.href.startsWith("http") ? "noreferrer" : undefined}
+                    >
+                      <i className={option.iconClass} aria-hidden="true" />
+                      <span>{option.label}</span>
+                    </a>
+                  ))
+                : mainOptions.map((option) => {
+                    if (option.href) {
+                      return (
+                        <a
+                          key={option.label}
+                          className="contact-option"
+                          href={option.href}
+                          target={option.href.startsWith("http") ? "_blank" : undefined}
+                          rel={option.href.startsWith("http") ? "noreferrer" : undefined}
+                        >
+                          <i className={option.iconClass} aria-hidden="true" />
+                          <span>{option.label}</span>
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <button
+                        key={option.label}
+                        type="button"
+                        className="contact-option contact-option-btn"
+                        onClick={() => setPhoneChooserOpen(true)}
+                      >
+                        <i className={option.iconClass} aria-hidden="true" />
+                        <span>{option.label}</span>
+                      </button>
+                    );
+                  })}
             </div>
+
+            {isPhoneChooserOpen ? (
+              <button type="button" className="ghost-btn back-btn" onClick={() => setPhoneChooserOpen(false)}>
+                {t.popup.close}
+              </button>
+            ) : null}
           </motion.div>
         </motion.div>
       ) : null}

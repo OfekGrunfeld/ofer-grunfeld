@@ -42,14 +42,15 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
             }}
           >
             <i className="fa-brands fa-whatsapp" aria-hidden="true" />
-            <span>WhatsApp: </span>
+            <span>{t.popup.whatsapp}: </span>
             <a
               href={whatsappHref}
               onClick={(event) => event.stopPropagation()}
               target="_blank"
               rel="noreferrer"
+              className="contact-ltr hero-contact-value"
             >
-              +972-523-252920
+              {t.contactData.phone}
             </a>
           </div>
           <div
@@ -65,8 +66,8 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
             }}
           >
             <i className="fa-solid fa-envelope" aria-hidden="true" />
-            <span>Email: </span>
-            <a href={emailHref} onClick={(event) => event.stopPropagation()}>
+            <span>{t.popup.email}: </span>
+            <a href={emailHref} onClick={(event) => event.stopPropagation()} className="contact-ltr hero-contact-value">
               {t.contactData.email}
             </a>
           </div>
@@ -106,16 +107,13 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
           >
             {t.hero.primaryCta}
           </a>
-          <button type="button" className="ghost-btn" onClick={onSecondaryAction}>
-            {t.hero.secondaryCta}
-          </button>
         </motion.div>
       </div>
 
       <button type="button" className="hero-scroll" onClick={onScrollDown} aria-label={t.hero.scrollHint}>
         <span>{t.hero.scrollHint}</span>
         <span className="hero-scroll-icon" aria-hidden="true">
-          ⌄
+          <i className="fa-solid fa-angles-down" />
         </span>
       </button>
     </section>

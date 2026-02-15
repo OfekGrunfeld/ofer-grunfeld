@@ -106,11 +106,6 @@ export default function ContactSection({ sectionRef, onContactClick }) {
               <strong>{t.contact.officeHours}</strong>
             </div>
           </article>
-
-          <p className="muted previous-email">
-            <span aria-hidden="true">•</span>
-            <span>{t.contact.previousEmail}</span>
-          </p>
         </div>
 
         <aside className="contact-cta surface">

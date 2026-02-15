@@ -167,7 +167,7 @@ function SideSectionNav({ activeSection, sectionOrder, onNavigate }) {
         onClick={() => onNavigate(sectionOrder[Math.max(safeIndex - 1, 0)])}
         aria-label={t.common.previous}
       >
-        ↑
+        <i className="fa-solid fa-chevron-up" aria-hidden="true" />
       </button>
       <div className="side-dots">
         {sectionOrder.map((section) => (
@@ -187,7 +187,7 @@ function SideSectionNav({ activeSection, sectionOrder, onNavigate }) {
         onClick={() => onNavigate(sectionOrder[Math.min(safeIndex + 1, sectionOrder.length - 1)])}
         aria-label={t.common.next}
       >
-        ↓
+        <i className="fa-solid fa-chevron-down" aria-hidden="true" />
       </button>
     </aside>
   );

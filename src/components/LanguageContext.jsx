@@ -10,7 +10,7 @@ const translations = {
       forensic: "Forensic Genealogy",
       testimonials: "Testimonials",
       contact: "Contact",
-      searchPlaceholder: "Search services or topics...",
+      searchPlaceholder: "Search",
       consultation: "Schedule Consultation",
       openMenu: "Open menu",
       closeMenu: "Close menu"
@@ -21,7 +21,6 @@ const translations = {
       subtitle:
         "If you have lost, dormant, or unclaimed funds in Israel, I will guide you personally from initial check to final recovery. My firm manages dormant funds and unclaimed property cases.",
       primaryCta: "Schedule Consultation",
-      secondaryCta: "Learn More",
       scrollHint: "Explore services"
     },
     tabs: {
@@ -32,14 +31,12 @@ const translations = {
     about: {
       kicker: "Personal Approach",
       title: "A Single Point of Accountability",
-      subtitle:
-        "I personally handle sensitive inheritance and dormant-fund cases with clear updates, practical strategy, and direct accountability.",
       description:
         "My work combines legal representation and forensic genealogy to locate heirs, prove ownership, and recover dormant assets in Israel and abroad.",
       profile: {
         name: "Ofer Grunfeld",
         role: "Genealogist, Advocate",
-        bio: "I combine legal strategy with genealogical analysis to resolve complex claims and move dormant-fund cases to real outcomes."
+        bio: "I personally handle sensitive inheritance and dormant-fund cases with clear updates, practical strategy, and direct accountability. I combine legal strategy with genealogical analysis to resolve complex claims and move dormant-fund cases to real outcomes."
       }
     },
     forensic: {
@@ -188,7 +185,7 @@ const translations = {
       forensic: "גנאלוגיה פורנזית",
       testimonials: "המלצות",
       contact: "יצירת קשר",
-      searchPlaceholder: "חפשו שירותים או נושאים...",
+      searchPlaceholder: "חיפוש",
       consultation: "קביעת פגישת ייעוץ",
       openMenu: "פתח תפריט",
       closeMenu: "סגור תפריט"
@@ -199,7 +196,6 @@ const translations = {
       subtitle:
         "אם קיימים כספים אבודים, רדומים או נכסים ללא דורש בישראל, אני מלווה אתכם אישית מבדיקה התחלתית ועד להשבה מלאה. המשרד מטפל בתיקי כספים רדומים ונכסים ללא דורש.",
       primaryCta: "קביעת פגישת ייעוץ",
-      secondaryCta: "למדו עוד",
       scrollHint: "גללו לשירותים"
     },
     tabs: {

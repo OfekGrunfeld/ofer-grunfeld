@@ -34,11 +34,9 @@ export default function Navigation({
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
-
   const handleMobileNavigate = (key) => {
     onNavigate(key);
-    closeMobileMenu();
+    setMobileMenuOpen(false);
   };
 
   return (
@@ -71,9 +69,7 @@ export default function Navigation({
 
         <div className="nav-actions">
           <div className="search-box is-open">
-            <span className="search-icon" aria-hidden="true">
-              ⌕
-            </span>
+            <i className="fa-solid fa-magnifying-glass search-icon" aria-hidden="true" />
             <input
               value={searchQuery}
               onFocus={onSearchFocus}
@@ -83,8 +79,8 @@ export default function Navigation({
             />
           </div>
 
-          <button className="icon-btn" type="button" onClick={toggleTheme} aria-label="theme">
-            {theme === "light" ? "☾" : "☼"}
+          <button className="icon-btn theme-btn" type="button" onClick={toggleTheme} aria-label="theme">
+            <i className={theme === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun"} aria-hidden="true" />
           </button>
 
           <button
@@ -93,7 +89,7 @@ export default function Navigation({
             onClick={toggleLanguage}
             aria-label="language"
           >
-            {t.common.languageToggle}
+            <i className="fa-solid fa-language" aria-hidden="true" />
           </button>
 
           <button className="cta-btn small" type="button" onClick={onContactClick}>
@@ -106,7 +102,7 @@ export default function Navigation({
             onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={isMobileMenuOpen ? t.nav.closeMenu : t.nav.openMenu}
           >
-            {isMobileMenuOpen ? "×" : "☰"}
+            {isMobileMenuOpen ? "×" : "="}
           </button>
         </div>
       </div>
@@ -120,14 +116,43 @@ export default function Navigation({
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
           >
-            {navItems.map((item) => (
-              <button key={item.key} type="button" onClick={() => handleMobileNavigate(item.key)}>
-                {t.nav[item.labelKey]}
+            <div className="mobile-nav-sections">
+              {navItems.map((item) => (
+                <button key={item.key} type="button" onClick={() => handleMobileNavigate(item.key)}>
+                  {t.nav[item.labelKey]}
+                </button>
+              ))}
+            </div>
+
+            <div className="mobile-search-box">
+              <i className="fa-solid fa-magnifying-glass search-icon" aria-hidden="true" />
+              <input
+                value={searchQuery}
+                onFocus={onSearchFocus}
+                onChange={(event) => onSearchQueryChange(event.target.value)}
+                placeholder={t.nav.searchPlaceholder}
+                aria-label={t.nav.searchPlaceholder}
+              />
+            </div>
+
+            <div className="mobile-nav-tools">
+              <button className="icon-btn theme-btn" type="button" onClick={toggleTheme} aria-label="theme">
+                <i className={theme === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun"} aria-hidden="true" />
               </button>
-            ))}
-            <button type="button" className="cta-btn" onClick={onContactClick}>
-              {t.nav.consultation}
-            </button>
+              <button type="button" className="mobile-lang-btn" onClick={toggleLanguage} aria-label="language">
+                <i className="fa-solid fa-language" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                className="cta-btn"
+                onClick={() => {
+                  onContactClick();
+                  setMobileMenuOpen(false);
+                }}
+              >
+                {t.nav.consultation}
+              </button>
+            </div>
           </motion.nav>
         ) : null}
       </AnimatePresence>

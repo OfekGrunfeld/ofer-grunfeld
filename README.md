@@ -1,6 +1,6 @@
 # Ofer Grunfeld Law Firm Launchpad (Front-End)
 
-Single-page, front-end only React application for a forensic genealogy legal practice.
+Single-page, front-end only React application for a landing page website.
 
 ## Features
 
@@ -23,15 +23,15 @@ Single-page, front-end only React application for a forensic genealogy legal pra
 ## Run
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 ## Build
 
 ```bash
-npm run build
-npm run preview
+bun run build
+bun run preview
 ```
 
 ## Notes

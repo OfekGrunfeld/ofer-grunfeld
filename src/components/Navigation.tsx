@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
-import { useTheme } from "./ThemeContext";
 
 const navItems = [
   { key: "about", labelKey: "about" },
@@ -25,13 +24,9 @@ function ScaleMark() {
 export default function Navigation({
   activeSection,
   onNavigate,
-  onContactClick,
-  searchQuery,
-  onSearchQueryChange,
-  onSearchFocus
+  onContactClick
 }) {
-  const { t, toggleLanguage } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
+  const { t, language, setLanguage } = useLanguage();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleMobileNavigate = (key) => {
@@ -68,29 +63,24 @@ export default function Navigation({
         </nav>
 
         <div className="nav-actions">
-          <div className="search-box is-open">
-            <i className="fa-solid fa-magnifying-glass search-icon" aria-hidden="true" />
-            <input
-              value={searchQuery}
-              onFocus={onSearchFocus}
-              onChange={(event) => onSearchQueryChange(event.target.value)}
-              placeholder={t.nav.searchPlaceholder}
-              aria-label={t.nav.searchPlaceholder}
-            />
+          <div className="language-switch" role="group" aria-label="Language selection">
+            <button
+              className={`lang-choice ${language === "en" ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setLanguage("en")}
+              aria-pressed={language === "en"}
+            >
+              English
+            </button>
+            <button
+              className={`lang-choice ${language === "he" ? "is-active" : ""}`}
+              type="button"
+              onClick={() => setLanguage("he")}
+              aria-pressed={language === "he"}
+            >
+              עברית
+            </button>
           </div>
-
-          <button className="icon-btn theme-btn" type="button" onClick={toggleTheme} aria-label="theme">
-            <i className={theme === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun"} aria-hidden="true" />
-          </button>
-
-          <button
-            className="icon-btn lang-btn"
-            type="button"
-            onClick={toggleLanguage}
-            aria-label="language"
-          >
-            <i className="fa-solid fa-language" aria-hidden="true" />
-          </button>
 
           <button className="cta-btn small" type="button" onClick={onContactClick}>
             {t.nav.consultation}
@@ -124,24 +114,25 @@ export default function Navigation({
               ))}
             </div>
 
-            <div className="mobile-search-box">
-              <i className="fa-solid fa-magnifying-glass search-icon" aria-hidden="true" />
-              <input
-                value={searchQuery}
-                onFocus={onSearchFocus}
-                onChange={(event) => onSearchQueryChange(event.target.value)}
-                placeholder={t.nav.searchPlaceholder}
-                aria-label={t.nav.searchPlaceholder}
-              />
-            </div>
-
             <div className="mobile-nav-tools">
-              <button className="icon-btn theme-btn" type="button" onClick={toggleTheme} aria-label="theme">
-                <i className={theme === "light" ? "fa-solid fa-moon" : "fa-solid fa-sun"} aria-hidden="true" />
-              </button>
-              <button type="button" className="mobile-lang-btn" onClick={toggleLanguage} aria-label="language">
-                <i className="fa-solid fa-language" aria-hidden="true" />
-              </button>
+              <div className="mobile-language-switch" role="group" aria-label="Language selection">
+                <button
+                  type="button"
+                  className={`mobile-lang-btn ${language === "en" ? "is-active" : ""}`}
+                  onClick={() => setLanguage("en")}
+                  aria-pressed={language === "en"}
+                >
+                  English
+                </button>
+                <button
+                  type="button"
+                  className={`mobile-lang-btn ${language === "he" ? "is-active" : ""}`}
+                  onClick={() => setLanguage("he")}
+                  aria-pressed={language === "he"}
+                >
+                  עברית
+                </button>
+              </div>
               <button
                 type="button"
                 className="cta-btn"

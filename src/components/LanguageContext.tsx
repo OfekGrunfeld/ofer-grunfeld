@@ -5,7 +5,7 @@ const LanguageContext = createContext(null);
 const translations = {
   en: {
     nav: {
-      brand: "Ofer Grunfeld, Advocate",
+      brand: "Ofer Grunfeld, Advocate, Genealogist",
       about: "About",
       forensic: "Forensic Genealogy",
       testimonials: "Testimonials",
@@ -20,6 +20,7 @@ const translations = {
       title: "Let’s Recover What Is Rightfully Yours",
       subtitle:
         "If you have lost, dormant, or unclaimed funds in Israel, I will guide you personally from initial check to final recovery. My firm manages dormant funds and unclaimed property cases.",
+      whatsappLabel: "WhatsApp/Mobile",
       primaryCta: "Schedule Consultation",
       scrollHint: "Explore services"
     },
@@ -33,6 +34,8 @@ const translations = {
       title: "A Single Point of Accountability",
       description:
         "My work combines legal representation and forensic genealogy to locate heirs, prove ownership, and recover dormant assets in Israel and abroad.",
+      extra:
+        "My office also works in genealogy, heirship verification, beneficiary research, multi-jurisdiction estate asset tracing, and advisory support for legal and estate professionals.",
       profile: {
         name: "Ofer Grunfeld",
         role: "Genealogist, Advocate",
@@ -59,25 +62,6 @@ const translations = {
           title: "Court Documentation",
           description:
             "Prepare clear legal submissions, evidence summaries, and probate-ready case files."
-        }
-      ],
-      timelineTitle: "How We Work",
-      timelineSteps: [
-        {
-          title: "Initial Consultation",
-          description: "We review available facts, legal status, and recovery potential."
-        },
-        {
-          title: "Research & Evidence Mapping",
-          description: "I map historical, legal, and genealogical evidence into a coherent claim."
-        },
-        {
-          title: "Documentation",
-          description: "All findings are structured into a clear legal strategy and formal exhibits."
-        },
-        {
-          title: "Legal Resolution",
-          description: "I represent your claim through negotiation, filing, or court process as needed."
         }
       ]
     },
@@ -180,7 +164,7 @@ const translations = {
   },
   he: {
     nav: {
-      brand: "עופר גרינפלד, עו\"ד",
+      brand: "עופר גרינפלד, עורך דין, גנאולוג",
       about: "אודות",
       forensic: "גנאלוגיה פורנזית",
       testimonials: "המלצות",
@@ -191,10 +175,11 @@ const translations = {
       closeMenu: "סגור תפריט"
     },
     hero: {
-      badge: "עופר גרינפלד, גנאלוג, עו״ד",
-      title: "מחזירים לכם את מה שמגיע לכם",
+      badge: "עופר גרינפלד, עו״ד, גנאלוג",
+      title: "איתור והשבת כספים רדומים,\nנכסים אבודים וזכויות ירושה",
       subtitle:
-        "אם קיימים כספים אבודים, רדומים או נכסים ללא דורש בישראל, אני מלווה אתכם אישית מבדיקה התחלתית ועד להשבה מלאה. המשרד מטפל בתיקי כספים רדומים ונכסים ללא דורש.",
+        "משרדנו מתמחה באיתור כספים רדומים ורכוש אבוד ובהשבתם לבעליהם.\nאנו מבצעים איתור, והחזרת זכויות בנכסים פיננסיים ומקרקעין, לרבות חשבונות בנק, פוליסות ביטוח, קופות גמל, קרנות השתלמות ונכסי נדל״ן.\nאיתור הכספים והרכוש ניתן לתושבי ישראל לשעבר ולאזרחים זרים, לעורכי דין ולמנהלי עיזבונות, לקבלנים ויזמים, לחוקרים פרטיים, ולמתווכים.",
+      whatsappLabel: "ווטסאפ/נייד",
       primaryCta: "קביעת פגישת ייעוץ",
       scrollHint: "גללו לשירותים"
     },
@@ -205,11 +190,13 @@ const translations = {
     },
     about: {
       kicker: "גישה אישית",
-      title: "כתובת אחת לאחריות מלאה",
+      title: "אודות",
       subtitle:
         "אני מלווה אישית תיקים רגישים של ירושה וכספים רדומים עם עדכונים ברורים, אסטרטגיה מעשית ואחריות מלאה.",
       description:
         "העבודה שלי משלבת ייצוג משפטי עם גנאלוגיה פורנזית כדי לאתר יורשים, להוכיח זכאות ולהשיב כספים ונכסים בארץ ובעולם.",
+      extra:
+        "משרדנו מתמחה בגנאלוגיה – חקר אילנות יוחסין, הוכחת יורשים, איתור אנשים חיים ונפטרים, איתור יורשים ומוטבים, איתור עמיתים מנותקי קשר ומשפחותיהם, ואיתור רכוש בהליכי עיזבון רב-מדינתיים.\nעו\"ד עופר גרינפלד משמש כיועץ בתחום הגנאלוגיה וחקר היוחסין לעורכי דין ולמנהלי עיזבונות, לקבלנים ויזמים, לחוקרים פרטיים, למתווכים, ואף עורך חוות דעת גנאלוגיות לבתי המשפט.\nמומחה בסכסוכי ירושה ובטיפול בעיזבונות מורכבים, בתכנון משפטי וכלכלי בהליכי קדם-עיזבון, ובהעברה בין-דורית.",
       profile: {
         name: "עופר גרינפלד",
         role: "גנאלוג, עו״ד",
@@ -224,34 +211,15 @@ const translations = {
       services: [
         {
           title: "איתור יורשים",
-          description: "זיהוי ואיתור יורשים חוקיים בארץ ובעולם באמצעות רישומים רשמיים ותחקור משפחתי."
+          description: "זיהוי ואיתור יורשים חוקיים בארץ ובעולם באמצעות רישומים רשמיים ומחקר גנאלוגי והיסטורי."
         },
         {
-          title: "מחקר היסטורי",
-          description: "בניית שרשרת יוחסין מאומתת מארכיונים, מסמכי הגירה ותיעוד אזרחי ישן."
+          title: "עצי שורשים",
+          description: "בניית אילן יוחסין מאומת על בסיס מסמכים פורמאליים וארכיוניים."
         },
         {
-          title: "תיעוד לבית משפט",
-          description: "הכנת כתבי טענות מסודרים, תקצירי ראיות ותיק עיזבון מוכן להליך משפטי."
-        }
-      ],
-      timelineTitle: "איך התהליך עובד",
-      timelineSteps: [
-        {
-          title: "פגישת היכרות",
-          description: "ממפים את העובדות, המעמד המשפטי ופוטנציאל ההשבה."
-        },
-        {
-          title: "מחקר ומיפוי ראיות",
-          description: "אני ממפה את החומר ההיסטורי, המשפטי והגנאלוגי לכדי תביעה סדורה."
-        },
-        {
-          title: "הכנת מסמכים",
-          description: "הממצאים נבנים לאסטרטגיה משפטית ברורה עם נספחים סדורים."
-        },
-        {
-          title: "פתרון משפטי",
-          description: "ייצוג מול גורמים רלוונטיים, הגשות או הליך משפטי לפי הצורך."
+          title: "ליטיגציה בסכסוכי עזבונות",
+          description: "מענה לשאלות משפטיות, הכנה והגשת כתבי טענות וראיות, ניהול תיק משפטי מתחילתו ועד סופו."
         }
       ]
     },

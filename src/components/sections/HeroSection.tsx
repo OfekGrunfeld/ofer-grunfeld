@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 
-export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAction, onScrollDown }) {
+export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAction }) {
   const { t } = useLanguage();
   const whatsappHref = `https://wa.me/${t.contactData.whatsappNumber}`;
   const emailHref = `mailto:${t.contactData.email}`;
@@ -13,16 +13,6 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
       <div className="hero-grid" aria-hidden="true" />
 
       <div className="container hero-content">
-        <motion.span
-          className="hero-badge"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45 }}
-        >
-          <span className="pulse-dot" aria-hidden="true" />
-          {t.hero.badge}
-        </motion.span>
-
         <motion.div
           className="hero-availability"
           initial={{ opacity: 0, y: 16 }}
@@ -42,7 +32,7 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
             }}
           >
             <i className="fa-brands fa-whatsapp" aria-hidden="true" />
-            <span>{t.popup.whatsapp}: </span>
+            <span>{t.hero.whatsappLabel}: </span>
             <a
               href={whatsappHref}
               onClick={(event) => event.stopPropagation()}
@@ -82,40 +72,7 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
           {t.hero.title}
         </motion.h1>
 
-        <motion.p
-          className="hero-subtitle"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.16 }}
-        >
-          {t.hero.subtitle}
-        </motion.p>
-
-        <motion.div
-          className="hero-actions"
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.22 }}
-        >
-          <a
-            href="#contact"
-            className="cta-btn"
-            onClick={(event) => {
-              event.preventDefault();
-              onPrimaryAction();
-            }}
-          >
-            {t.hero.primaryCta}
-          </a>
-        </motion.div>
       </div>
-
-      <button type="button" className="hero-scroll" onClick={onScrollDown} aria-label={t.hero.scrollHint}>
-        <span>{t.hero.scrollHint}</span>
-        <span className="hero-scroll-icon" aria-hidden="true">
-          <i className="fa-solid fa-angles-down" />
-        </span>
-      </button>
     </section>
   );
 }

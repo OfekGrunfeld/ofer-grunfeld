@@ -23,7 +23,6 @@ export default function TestimonialsSection({ sectionRef, onContactClick }) {
         <div className="section-head">
           <span className="section-kicker">{t.testimonials.kicker}</span>
           <h2 className="section-title serif">{t.testimonials.title}</h2>
-          <p className="section-subtitle">{t.testimonials.subtitle}</p>
         </div>
 
         <div className="testimonial-shell surface">

@@ -9,9 +9,7 @@ export default function AboutSection({ sectionRef }) {
     <section id="about" ref={sectionRef} className="section section-about">
       <div className="container">
         <div className="section-head">
-          <span className="section-kicker">{t.about.kicker}</span>
           <h2 className="section-title serif">{t.about.title}</h2>
-          <p className="section-subtitle">{t.about.subtitle}</p>
         </div>
 
         <div className="about-grid">
@@ -31,8 +29,10 @@ export default function AboutSection({ sectionRef }) {
 
           <div className="about-content">
             <article className="about-intro surface">
-              <p>{t.about.profile.bio}</p>
-              <p className="muted">{t.about.description}</p>
+              <p className="about-long-copy">{t.hero.subtitle}</p>
+            </article>
+            <article className="about-intro surface">
+              <p className="about-long-copy">{t.about.extra}</p>
             </article>
           </div>
         </div>

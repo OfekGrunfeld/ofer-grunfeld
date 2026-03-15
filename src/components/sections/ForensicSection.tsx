@@ -12,8 +12,6 @@ export default function ForensicSection({ sectionRef }) {
       <div className="container">
         <div className="section-head">
           <span className="section-kicker">{t.forensic.kicker}</span>
-          <h2 className="section-title serif">{t.forensic.title}</h2>
-          <p className="section-subtitle">{t.forensic.subtitle}</p>
         </div>
 
         <div className="services-grid">
@@ -34,20 +32,6 @@ export default function ForensicSection({ sectionRef }) {
             </motion.article>
           ))}
         </div>
-
-        <div className="timeline-wrap surface">
-          <h3>{t.forensic.timelineTitle}</h3>
-          <div className="timeline-grid">
-            {t.forensic.timelineSteps.map((step, index) => (
-              <article key={step.title} className="timeline-step">
-                <span className="timeline-number">{String(index + 1).padStart(2, "0")}</span>
-                <h4>{step.title}</h4>
-                <p>{step.description}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-
       </div>
     </section>
   );

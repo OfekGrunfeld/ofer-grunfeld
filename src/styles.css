@@ -784,6 +784,7 @@ html[dir="rtl"] .hero-contact-chip {
   margin: 0.45rem 0 0;
   color: var(--text-soft);
   line-height: 1.68;
+  white-space: pre-line;
 }
 
 .timeline-wrap {
@@ -838,12 +839,6 @@ html[dir="rtl"] .hero-contact-chip {
   min-height: 13rem;
 }
 
-.stars {
-  margin: 0;
-  color: var(--cyan);
-  letter-spacing: 0.16rem;
-}
-
 .testimonial-slide blockquote {
   margin: 0.95rem 0;
   font-size: clamp(1.12rem, 2.2vw, 1.45rem);
@@ -858,6 +853,24 @@ html[dir="rtl"] .hero-contact-chip {
 
 .testimonial-slide footer span {
   color: var(--text-soft);
+}
+
+.testimonial-translation-btn {
+  margin-top: 0.75rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--surface-strong) 82%, transparent);
+  color: var(--text-main);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.testimonial-translation-btn:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--blue) 50%, var(--border));
 }
 
 .testimonial-controls {

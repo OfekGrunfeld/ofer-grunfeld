@@ -95,7 +95,6 @@ export default function ContactSection({ sectionRef, onContactClick }) {
             <a className="contact-line" href={`mailto:${t.contactData.email}`}>
               <span>{t.contact.emailLabel}</span>
               <strong className="contact-ltr">{t.contactData.email}</strong>
-              <small className="previous-email-inline">{t.contact.previousEmailInline}</small>
             </a>
             <button type="button" className="contact-line" onClick={() => setMapPopupOpen(true)}>
               <span>{t.contact.addressLabel}</span>
@@ -111,7 +110,6 @@ export default function ContactSection({ sectionRef, onContactClick }) {
         <aside className="contact-cta surface">
           <h3>{t.contact.ctaTitle}</h3>
           <p>{t.contact.ctaText}</p>
-          <div className="notice">{t.contact.notice}</div>
           <button type="button" className="cta-btn" onClick={onContactClick}>
             {t.contact.ctaButton}
           </button>

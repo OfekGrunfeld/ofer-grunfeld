@@ -2,7 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 
-const serviceIcons = ["⌘", "⌗", "✦"];
+const serviceIcons = [
+  "fa-solid fa-users-viewfinder",
+  "fa-solid fa-wallet",
+  "fa-solid fa-building-circle-check",
+  "fa-solid fa-tree",
+  "fa-solid fa-gavel"
+];
 
 export default function ForensicSection({ sectionRef }) {
   const { t } = useLanguage();
@@ -25,7 +31,7 @@ export default function ForensicSection({ sectionRef }) {
               transition={{ duration: 0.4, delay: index * 0.06 }}
             >
               <span className="service-icon" aria-hidden="true">
-                {serviceIcons[index % serviceIcons.length]}
+                <i className={serviceIcons[index % serviceIcons.length]} aria-hidden="true" />
               </span>
               <h3>{service.title}</h3>
               <p>{service.description}</p>

@@ -1,13 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
 
 export default function TestimonialsSection({ sectionRef, onContactClick }) {
-  const { direction, t } = useLanguage();
+  const { direction, language, t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showTranslation, setShowTranslation] = useState(false);
 
   const testimonials = t.testimonials.items;
   const isRtl = direction === "rtl";
+  const activeTestimonial = testimonials[activeIndex];
+  const displayAuthor =
+    language === "en" && showTranslation && activeTestimonial.translationAuthor
+      ? activeTestimonial.translationAuthor
+      : activeTestimonial.author;
+
+  useEffect(() => {
+    setShowTranslation(false);
+  }, [activeIndex, language]);
 
   const goNext = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -35,14 +45,24 @@ export default function TestimonialsSection({ sectionRef, onContactClick }) {
               exit={{ opacity: 0, x: isRtl ? 24 : -24 }}
               transition={{ duration: 0.3 }}
             >
-              <p className="stars" aria-label="5 stars">
-                ★★★★★
-              </p>
-              <blockquote>{testimonials[activeIndex].quote}</blockquote>
+              <blockquote>
+                {language === "en" && showTranslation && activeTestimonial.translation
+                  ? activeTestimonial.translation
+                  : activeTestimonial.quote}
+              </blockquote>
               <footer>
-                <strong>{testimonials[activeIndex].author}</strong>
-                <span>{testimonials[activeIndex].role}</span>
+                <strong>{displayAuthor}</strong>
+                <span>{activeTestimonial.role}</span>
               </footer>
+              {language === "en" && activeTestimonial.translation ? (
+                <button
+                  type="button"
+                  className="testimonial-translation-btn"
+                  onClick={() => setShowTranslation((prev) => !prev)}
+                >
+                  {showTranslation ? "Show original review" : "Show English translation"}
+                </button>
+              ) : null}
             </motion.article>
           </AnimatePresence>
 

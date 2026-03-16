@@ -85,7 +85,7 @@ export default function ContactSection({ sectionRef, onContactClick }) {
         <div className="contact-info">
           <span className="section-kicker">{t.contact.kicker}</span>
           <h2 className="section-title serif">{t.contact.title}</h2>
-          <p className="section-subtitle">{t.contact.subtitle}</p>
+          {t.contact.subtitle ? <p className="section-subtitle">{t.contact.subtitle}</p> : null}
 
           <article className="contact-card surface">
             <button type="button" className="contact-line" onClick={() => setPhonePopupOpen(true)}>

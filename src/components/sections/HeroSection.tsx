@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
+import heroBackground from "../../assets/hero-briefcase-background.png";
 
 export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAction }) {
   const { t } = useLanguage();
@@ -8,7 +9,12 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
   const emailHref = `mailto:${t.contactData.email}`;
 
   return (
-    <section id="hero" ref={sectionRef} className="hero-section">
+    <section
+      id="hero"
+      ref={sectionRef}
+      className="hero-section"
+      style={{ "--hero-bg-image": `url(${heroBackground})` }}
+    >
       <div className="hero-bg" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true" />
 

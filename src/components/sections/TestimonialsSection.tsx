@@ -10,6 +10,11 @@ export default function TestimonialsSection({ sectionRef, onContactClick }) {
   const testimonials = t.testimonials.items;
   const isRtl = direction === "rtl";
   const activeTestimonial = testimonials[activeIndex];
+  const displayQuote =
+    language === "en" && showTranslation && activeTestimonial.translation
+      ? activeTestimonial.translation
+      : activeTestimonial.quote;
+  const isNonHebrewQuote = /[A-Za-z]/.test(displayQuote) && !/[\u0590-\u05FF]/.test(displayQuote);
   const displayAuthor =
     language === "en" && showTranslation && activeTestimonial.translationAuthor
       ? activeTestimonial.translationAuthor
@@ -45,10 +50,8 @@ export default function TestimonialsSection({ sectionRef, onContactClick }) {
               exit={{ opacity: 0, x: isRtl ? 24 : -24 }}
               transition={{ duration: 0.3 }}
             >
-              <blockquote>
-                {language === "en" && showTranslation && activeTestimonial.translation
-                  ? activeTestimonial.translation
-                  : activeTestimonial.quote}
+              <blockquote className={isNonHebrewQuote ? "is-ltr" : ""}>
+                {displayQuote}
               </blockquote>
               <footer>
                 <strong>{displayAuthor}</strong>

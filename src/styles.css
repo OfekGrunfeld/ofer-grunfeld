@@ -390,12 +390,14 @@ html[dir="rtl"] .serif {
   position: absolute;
   inset: 0;
   background:
+    linear-gradient(180deg, rgba(248, 251, 254, 0.32), rgba(248, 251, 254, 0.46)),
     linear-gradient(120deg, color-mix(in oklab, var(--cyan) 18%, transparent), transparent 55%),
     linear-gradient(180deg, color-mix(in oklab, var(--blue) 12%, transparent), transparent 48%),
-    url("/briefcase.svg");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.17;
+    var(--hero-bg-image);
+  background-size: auto, auto, auto, cover;
+  background-position: center, center, center, 72% 34%;
+  background-repeat: no-repeat;
+  opacity: 0.68;
 }
 
 .hero-grid {
@@ -506,9 +508,19 @@ html[dir="rtl"] .hero-contact-chip {
 
 .hero-title {
   margin: auto 0;
+  padding: 0.4rem 1rem;
   font-size: clamp(1.7rem, 4.2vw, 3.1rem);
   line-height: 1.05;
   white-space: pre-line;
+  color: #0b1326;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 15%), rgb(255 255 255 / 15%));
+  box-shadow:
+    0 14px 36px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.42);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9),
+    0 8px 24px rgba(15, 23, 42, 0.16);
 }
 
 .hero-subtitle {
@@ -843,6 +855,11 @@ html[dir="rtl"] .hero-contact-chip {
   font-size: clamp(1.12rem, 2.2vw, 1.45rem);
   line-height: 1.7;
   color: var(--text-main);
+}
+
+.testimonial-slide blockquote.is-ltr {
+  direction: ltr;
+  text-align: left;
 }
 
 .testimonial-slide footer {
@@ -1395,6 +1412,11 @@ html[dir="rtl"] .previous-email-inline {
 }
 
 @media (max-width: 700px) {
+  .hero-bg {
+    background-position: center, center, center, 62% 28%;
+    background-size: auto, auto, auto, cover;
+  }
+
   .hero-section {
     min-height: auto;
     padding-top: 4.25rem;
@@ -1409,6 +1431,7 @@ html[dir="rtl"] .previous-email-inline {
   .hero-title {
     line-height: 1.16;
     margin: 1rem 0 0;
+    padding: 0.35rem 0.8rem;
     font-size: clamp(1.45rem, 6.8vw, 2.2rem);
   }
 

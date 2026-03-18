@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 
 const navItems = [
-  { key: "about", labelKey: "about" },
   { key: "forensic", labelKey: "forensic" },
+  { key: "about", labelKey: "about" },
   { key: "testimonials", labelKey: "testimonials" },
   { key: "contact", labelKey: "contact" }
 ];

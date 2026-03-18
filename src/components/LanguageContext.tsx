@@ -518,6 +518,24 @@ const translations = {
   }
 };
 
+translations.en.hero.subtitle =
+  "Our firm specializes in locating dormant funds and unclaimed property and recovering them for their rightful owners, including bank accounts, insurance policies, provident funds, training funds, and real estate assets. These services are available to former Israeli residents and foreign citizens.";
+
+translations.en.about.extra =
+  "Our firm specializes in forensic genealogy, locating living and deceased individuals, tracing heir, and identifying assets in multi-state estate matters. Attorney Ofer Grunfeld advises lawyers, executors, private investigators, and real-estate agents, and provides genealogical expert opinions to the courts. His practice also includes estate litigation, complex estate administration, estate planning, and intergenerational assets transfer.";
+
+translations.en.forensic.services[0].description =
+  "Identifying and locating heirs all around the globe using official records and historical research";
+
+translations.he.hero.subtitle =
+  "משרדנו מתמחה באיתור כספים רדומים ורכוש אבוד ובהשבתם לבעליהם, לרבות זכויות בנכסים פיננסיים ומקרקעין כגון חשבונות בנק, פוליסות ביטוח, קופות גמל, קרנות השתלמות ונכסי נדל״ן. השירות ניתן גם לתושבי ישראל לשעבר ולאזרחים זרים.";
+
+translations.he.about.extra =
+  "משרדנו מתמחה בגנאלוגיה, לרבות חקר אילנות יוחסין, הוכחת יורשים, איתור אנשים, יורשים, מוטבים, מנותקי קשר, וכן איתור רכוש במסגרת הליכי עיזבון בינלאומיים. עו\"ד עופר גרינפלד מייעץ לעורכי דין, מנהלי עיזבונות, יזמים, חוקרים פרטיים ומתווכים, ועורך חוות דעת גנאלוגיות לבתי המשפט. תחומי מומחיותו כוללים סכסוכי ירושה, עיזבונות מורכבים, תכנון משפטי-כלכלי בהליכי קדם-עיזבון והעברה בין-דורית.";
+
+translations.he.forensic.services[0].description =
+  "זיהוי ואיתור יורשים בארץ ובעולם באמצעות רישומים רשמיים ומחקר גנאלוגי והיסטורי";
+
 export function LanguageProvider({ children }) {
   const [language, setLanguage] = useState("en");
 

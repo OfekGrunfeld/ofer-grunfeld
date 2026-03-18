@@ -83,7 +83,6 @@ export default function ContactSection({ sectionRef, onContactClick }) {
     <section id="contact" ref={sectionRef} className="section section-contact">
       <div className="container contact-layout">
         <div className="contact-info">
-          <span className="section-kicker">{t.contact.kicker}</span>
           <h2 className="section-title serif">{t.contact.title}</h2>
           {t.contact.subtitle ? <p className="section-subtitle">{t.contact.subtitle}</p> : null}
 

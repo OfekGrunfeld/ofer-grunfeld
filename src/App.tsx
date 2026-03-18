@@ -66,10 +66,10 @@ export default function App() {
   const testimonialsRef = useRef(null);
   const contactRef = useRef(null);
 
-  const sectionOrder = ["about", "forensic", "testimonials", "contact"];
-  const tabSections = ["about", "forensic", "testimonials"];
+  const sectionOrder = ["forensic", "about", "testimonials", "contact"];
+  const tabSections = ["forensic", "about", "testimonials"];
 
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("forensic");
   const [isContactPopupOpen, setContactPopupOpen] = useState(false);
 
   const sectionRefs = {
@@ -157,8 +157,8 @@ export default function App() {
         />
         <SideSectionNav activeSection={activeSection} sectionOrder={sectionOrder} onNavigate={scrollToSection} />
 
-        <AboutSection sectionRef={aboutRef} />
         <ForensicSection sectionRef={forensicRef} />
+        <AboutSection sectionRef={aboutRef} />
 
         <TestimonialsSection
           sectionRef={testimonialsRef}

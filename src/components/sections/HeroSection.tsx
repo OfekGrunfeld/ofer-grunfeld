@@ -4,9 +4,10 @@ import { useLanguage } from "../LanguageContext";
 import heroBackground from "../../assets/hero-briefcase-background.png";
 
 export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAction }) {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const whatsappHref = `https://wa.me/${t.contactData.whatsappNumber}`;
   const emailHref = `mailto:${t.contactData.email}`;
+  const heroPhoneLabel = language === "he" ? "052-325-2920" : t.contactData.phone;
 
   return (
     <section
@@ -46,7 +47,7 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
               rel="noreferrer"
               className="contact-ltr hero-contact-value"
             >
-              {t.contactData.phone}
+              {heroPhoneLabel}
             </a>
           </div>
           <div
@@ -77,7 +78,6 @@ export default function HeroSection({ sectionRef, onPrimaryAction, onSecondaryAc
         >
           {t.hero.title}
         </motion.h1>
-
       </div>
     </section>
   );

@@ -537,7 +537,7 @@ translations.he.forensic.services[0].description =
   "זיהוי ואיתור יורשים בארץ ובעולם באמצעות רישומים רשמיים ומחקר גנאלוגי והיסטורי";
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useState("he");
 
   const direction = language === "he" ? "rtl" : "ltr";
 
@@ -569,3 +569,4 @@ export function useLanguage() {
 
   return context;
 }
+

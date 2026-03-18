@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 
@@ -70,7 +70,7 @@ export default function Navigation({
               onClick={() => setLanguage("en")}
               aria-pressed={language === "en"}
             >
-              English
+              EN
             </button>
             <button
               className={`lang-choice ${language === "he" ? "is-active" : ""}`}
@@ -78,7 +78,7 @@ export default function Navigation({
               onClick={() => setLanguage("he")}
               aria-pressed={language === "he"}
             >
-              עברית
+              עב
             </button>
           </div>
 
@@ -122,7 +122,7 @@ export default function Navigation({
                   onClick={() => setLanguage("en")}
                   aria-pressed={language === "en"}
                 >
-                  English
+                  EN
                 </button>
                 <button
                   type="button"
@@ -130,7 +130,7 @@ export default function Navigation({
                   onClick={() => setLanguage("he")}
                   aria-pressed={language === "he"}
                 >
-                  עברית
+                  עב
                 </button>
               </div>
               <button

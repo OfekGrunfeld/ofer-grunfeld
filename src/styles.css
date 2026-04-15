@@ -702,7 +702,7 @@ html[dir="rtl"] .hero-title {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/briefcase.svg") center/cover no-repeat;
+  background: url("./assets/briefcase.svg") center/cover no-repeat;
   opacity: 0.08;
   pointer-events: none;
 }

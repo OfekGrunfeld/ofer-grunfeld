@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../LanguageContext";
+import oferImage from "../../assets/ofer.png";
 
 export default function AboutSection({ sectionRef }) {
   const { t } = useLanguage();
@@ -21,7 +22,7 @@ export default function AboutSection({ sectionRef }) {
             transition={{ duration: 0.45 }}
           >
             <div className="profile-visual-wrap">
-              <img src="/ofer.png" alt={t.about.profile.name} className="profile-image" />
+              <img src={oferImage} alt={t.about.profile.name} className="profile-image" />
             </div>
             <h3 className="serif">{t.about.profile.name}</h3>
             <p className="profile-role">{t.about.profile.role}</p>
